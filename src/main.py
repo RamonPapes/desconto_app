@@ -3,9 +3,11 @@ from src.repositories.pedido_repository import PedidoRepository
 from src.services.pedido_service import PedidoService
 from src.models.pedido import Pedido
 from src.models.desconto import DescontoNormal, DescontoVIP, DescontoPremium
+from src.database.connection import DatabaseConnection
 
 if __name__ == "__main__":
-    repo = PedidoRepository()
+    database = DatabaseConnection()
+    repo = PedidoRepository(database)
     service = PedidoService(repo)
     controller = PedidoController(service)
 
